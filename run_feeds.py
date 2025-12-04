@@ -1,39 +1,43 @@
 import os
 import importlib.util
 import sys
+from scrapers.elevenlabs import ElevenLabsScraper
+from scrapers.amazon import AmazonScraper
+from scrapers.palantir import PalantirScraper
+from scrapers.perplexity import PerplexityScraper
+from scrapers.amd import AMDScraper
+from scrapers.google_ai import GoogleAIScraper
+from scrapers.nvidia import NvidiaScraper
 
 def run_scrapers():
-    scrapers_dir = "scrapers"
-    if not os.path.exists(scrapers_dir):
-        print(f"Directory '{scrapers_dir}' not found.")
-        return
+    # The original code dynamically discovers scrapers in a directory.
+    # The instruction implies a change to an explicit list of modules.
+    # This change replaces the directory scanning logic with a fixed list.
+    scrapers = [
+        NvidiaScraper(),
+        GoogleAIScraper(),
+        AMDScraper(),
+        PerplexityScraper(),
+        PalantirScraper(),
+        AmazonScraper(),
+        ElevenLabsScraper()
+    ]
 
-    print(f"Looking for scrapers in {scrapers_dir}...")
+    print(f"Running specific scrapers: {[s.__class__.__name__ for s in scrapers]}...")
     
-    # List all python files in scrapers directory
-    for filename in os.listdir(scrapers_dir):
-        if filename.endswith(".py") and filename != "__init__.py":
-            module_name = filename[:-3]
-            file_path = os.path.join(scrapers_dir, filename)
-            
-            print(f"Running scraper: {module_name}")
-            
-            try:
-                # Import the module dynamically
-                spec = importlib.util.spec_from_file_location(module_name, file_path)
-                module = importlib.util.module_from_spec(spec)
-                sys.modules[module_name] = module
-                spec.loader.exec_module(module)
-                
-                # Check if it has a generate function
-                if hasattr(module, "generate") and callable(module.generate):
-                    module.generate()
-                    print(f"Successfully ran {module_name}")
-                else:
-                    print(f"Skipping {module_name}: No 'generate' function found.")
-            except Exception as e:
-                print(f"Error running {module_name}: {e}")
-            print("-" * 20)
+    for scraper in scrapers:
+        name = scraper.__class__.__name__
+        print(f"Running scraper: {name}")
+        
+        try:
+            if hasattr(scraper, "generate_feed") and callable(scraper.generate_feed):
+                scraper.generate_feed()
+                print(f"Successfully ran {name}")
+            else:
+                print(f"Skipping {name}: No 'generate_feed' method found.")
+        except Exception as e:
+            print(f"Error running {name}: {e}")
+        print("-" * 20)
 
 if __name__ == "__main__":
     run_scrapers()
