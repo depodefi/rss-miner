@@ -54,7 +54,13 @@ class PerplexityScraper:
         return full_text
 
     def generate_feed(self):
-        scraper = cloudscraper.create_scraper()
+        scraper = cloudscraper.create_scraper(
+            browser={
+                'browser': 'chrome',
+                'platform': 'windows',
+                'desktop': True
+            }
+        )
         url = "https://www.perplexity.ai/hub"
         
         print(f"Fetching {url}...")
@@ -76,6 +82,15 @@ class PerplexityScraper:
                 links.add(href)
                 
         print(f"Found {len(links)} articles.")
+        
+        if len(links) == 0:
+            print("WARNING: No articles found!")
+            print(f"Response status code: {response.status_code}")
+            print("Page title:", soup.title.string if soup.title else "No title")
+            print("First 500 chars of HTML content:")
+            print(response.text[:500])
+            if "Just a moment" in response.text:
+                print("POSSIBLE CLOUDFLARE BLOCK DETECTED")
         
         # Process articles (limit to 15 for now to avoid long runtimes/rate limits)
         for link in sorted(list(links))[:15]:
