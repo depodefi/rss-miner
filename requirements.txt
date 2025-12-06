@@ -3,3 +3,4 @@ beautifulsoup4
 rfeed
 python-dateutil
 lxml
+cloudscraper
