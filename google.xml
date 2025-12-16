@@ -5,9 +5,17 @@
     <link>https://blog.google/technology/ai/</link>
     <description><![CDATA[Latest news from Google AI]]></description>
     <language>en-US</language>
-    <lastBuildDate>Mon, 15 Dec 2025 10:05:41 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 16 Dec 2025 10:04:57 GMT</lastBuildDate>
     <generator>rfeed v1.1.1</generator>
     <docs>https://github.com/svpino/rfeed/blob/master/README.md</docs>
+    <item>
+      <title>We’re publishing an AI playbook to help others with sustainability reporting.</title>
+      <link>https://blog.google/outreach-initiatives/sustainability/ai-playbook-sustainability-reporting/</link>
+      <description><![CDATA[We’re sharing a practical playbook to help organizations streamline and enhance sustainability reporting with AI. Corporate transparency is essential, but navigating fragmented data and labor-intensive processes often leaves little bandwidth for the strategic work that actually drives progress forward. After two years of integrating AI into our own environmental reporting process, we’re open-sourcing our learnings to help others break through these bottlenecks. The AI Playbook for Sustainability Reporting is a hands-on toolkit designed to move from hype to implementation. It includes a systematic framework to audit processes, "starter pack" prompt templates for common tasks, and real-world examples of how teams can use tools like Gemini and NotebookLM to help validate claims and answer inquiries. Dive into the playbook today, and let us know if you have any feedback .]]></description>
+      <author>Google AI</author>
+      <pubDate>Mon, 15 Dec 2025 17:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://blog.google/outreach-initiatives/sustainability/ai-playbook-sustainability-reporting/</guid>
+    </item>
     <item>
       <title>You can now have more fluid and expressive conversations when you go Live with Search.</title>
       <link>https://blog.google/products/search/live-audio-gemini-model-update/</link>
@@ -159,14 +167,6 @@
       <author>Google AI</author>
       <pubDate>Tue, 25 Nov 2025 23:39:00 GMT</pubDate>
       <guid isPermaLink="true">https://blog.google/technology/ai/sundar-pichai-ai-release-notes-podcast/</guid>
-    </item>
-    <item>
-      <title>The Google guide for holiday help</title>
-      <link>https://blog.google/technology/ai/holiday-planning-ai-gemini-tips/</link>
-      <description><![CDATA[Check out our tips, trends and more for tackling any seasonal stress. Offload tedious tasks to Gemini, get insider recommendations from Google Maps and be sure you’re getting the best price when shopping on Google. Get the help you need — and then get back to enjoying the holiday festivities.]]></description>
-      <author>Google AI</author>
-      <pubDate>Tue, 25 Nov 2025 18:00:00 GMT</pubDate>
-      <guid isPermaLink="true">https://blog.google/technology/ai/holiday-planning-ai-gemini-tips/</guid>
     </item>
   </channel>
 </rss>
