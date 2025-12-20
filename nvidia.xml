@@ -1,11 +1,12 @@
 <?xml version="1.0" ?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
     <title>NVIDIA Generative AI News</title>
     <link>https://blogs.nvidia.com/blog/category/generative-ai/</link>
     <description><![CDATA[Latest news from NVIDIA Generative AI Blog]]></description>
     <language>en-US</language>
-    <lastBuildDate>Sat, 20 Dec 2025 22:42:49 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 20 Dec 2025 22:56:21 GMT</lastBuildDate>
     <generator>rfeed v1.1.1</generator>
     <docs>https://github.com/svpino/rfeed/blob/master/README.md</docs>
     <item>

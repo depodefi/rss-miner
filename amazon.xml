@@ -1,11 +1,12 @@
 <?xml version="1.0" ?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
     <title>Amazon AI News</title>
     <link>https://www.aboutamazon.com/artificial-intelligence-ai-news</link>
     <description><![CDATA[Latest news about AI at Amazon]]></description>
     <language>en-US</language>
-    <lastBuildDate>Sat, 20 Dec 2025 22:42:58 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 20 Dec 2025 22:56:29 GMT</lastBuildDate>
     <generator>rfeed v1.1.1</generator>
     <docs>https://github.com/svpino/rfeed/blob/master/README.md</docs>
     <item>
