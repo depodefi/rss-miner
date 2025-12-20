@@ -24,9 +24,22 @@ def run_scrapers():
     ]
 
     print(f"Running specific scrapers: {[s.__class__.__name__ for s in scrapers]}...")
+
+    # Get disabled scrapers from environment variable
+    disabled_env = os.environ.get("DISABLED_SCRAPERS", "")
+    disabled_scrapers = [s.strip() for s in disabled_env.split(",") if s.strip()]
+    if disabled_scrapers:
+        print(f"Disabled scrapers: {disabled_scrapers}")
     
+    success = True
     for scraper in scrapers:
         name = scraper.__class__.__name__
+        
+        if name in disabled_scrapers:
+            print(f"Skipping scraper: {name} (Disabled via config)")
+            print("-" * 20)
+            continue
+
         print(f"Running scraper: {name}")
         
         try:
@@ -37,7 +50,12 @@ def run_scrapers():
                 print(f"Skipping {name}: No 'generate_feed' method found.")
         except Exception as e:
             print(f"Error running {name}: {e}")
+            success = False
         print("-" * 20)
+
+    if not success:
+        print("One or more scrapers failed.")
+        sys.exit(1)
 
 if __name__ == "__main__":
     run_scrapers()

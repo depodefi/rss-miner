@@ -6,9 +6,17 @@ on:
     # Note: GitHub Actions uses UTC. This will be 12:00 PM CEST in summer.
     - cron: '0 10 * * *'
   workflow_dispatch: # Allow manual trigger
+    inputs:
+      disabled_scrapers:
+        description: 'Comma-separated list of scrapers to disable'
+        required: false
+        default: ''
   push:
     branches:
       - main
+
+env:
+  DISABLED_SCRAPERS: ${{ github.event.inputs.disabled_scrapers || '' }}
 
 permissions:
   contents: write
