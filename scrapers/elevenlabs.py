@@ -194,6 +194,9 @@ class ElevenLabsScraper:
         dom = xml.dom.minidom.parseString(xml_output)
         pretty_xml = dom.toprettyxml(indent="  ")
         
+        # Inject stylesheet
+        pretty_xml = pretty_xml.replace('<?xml version="1.0" ?>', '<?xml version="1.0" ?>\n<?xml-stylesheet type="text/xsl" href="style.xsl"?>')
+        
         final_xml = replace_cdata(pretty_xml)
         
         with open("feed/elevenlabs.xml", "w", encoding='utf-8') as f:

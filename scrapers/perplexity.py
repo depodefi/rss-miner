@@ -155,6 +155,8 @@ class PerplexityScraper:
             from xml.dom import minidom
             dom = minidom.parseString(xml_str)
             pretty_xml = dom.toprettyxml(indent="  ")
+            # Inject stylesheet
+            pretty_xml = pretty_xml.replace('<?xml version="1.0" ?>', '<?xml version="1.0" ?>\n<?xml-stylesheet type="text/xsl" href="style.xsl"?>')
             # Remove extra blank lines that minidom might introduce
             pretty_xml = "\n".join([line for line in pretty_xml.split('\n') if line.strip()])
         except Exception as e:

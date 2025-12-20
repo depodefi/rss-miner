@@ -129,6 +129,9 @@ class AMDScraper:
         rss_content = feed.rss()
         dom = xml.dom.minidom.parseString(rss_content)
         pretty_xml = dom.toprettyxml(indent="  ")
+        # Inject stylesheet
+        pretty_xml = pretty_xml.replace('<?xml version="1.0" ?>', '<?xml version="1.0" ?>\n<?xml-stylesheet type="text/xsl" href="style.xsl"?>')
+        
         
         # Post-process to add CDATA
         def replace_cdata(match):
