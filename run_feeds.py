@@ -8,12 +8,14 @@ from scrapers.perplexity import PerplexityScraper
 from scrapers.amd import AMDScraper
 from scrapers.google_ai import GoogleAIScraper
 from scrapers.nvidia import NvidiaScraper
+from scrapers.openai import OpenAIScraper
 
 def run_scrapers():
     # The original code dynamically discovers scrapers in a directory.
     # The instruction implies a change to an explicit list of modules.
     # This change replaces the directory scanning logic with a fixed list.
     scrapers = [
+        OpenAIScraper(),
         NvidiaScraper(),
         GoogleAIScraper(),
         AMDScraper(),
