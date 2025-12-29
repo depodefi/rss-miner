@@ -73,7 +73,7 @@ class NvidiaScraper:
                     description = p_tag.get_text(strip=True)
             
             # Fetch article page for date and description
-            pub_date = datetime.datetime.now()
+            pub_date = datetime.datetime.now(datetime.timezone.utc)
             try:
                 # print(f"Fetching article: {link}")
                 art_response = requests.get(link)
