@@ -4,6 +4,7 @@ import sys
 from scrapers.elevenlabs import ElevenLabsScraper
 from scrapers.amazon import AmazonScraper
 from scrapers.palantir import PalantirScraper
+from scrapers.anthropic import AnthropicScraper
 from scrapers.perplexity import PerplexityScraper
 from scrapers.amd import AMDScraper
 from scrapers.google_ai import GoogleAIScraper
@@ -22,7 +23,8 @@ def run_scrapers():
         PerplexityScraper(),
         PalantirScraper(),
         AmazonScraper(),
-        ElevenLabsScraper()
+        ElevenLabsScraper(),
+        AnthropicScraper()
     ]
 
     print(f"Running specific scrapers: {[s.__class__.__name__ for s in scrapers]}...")
