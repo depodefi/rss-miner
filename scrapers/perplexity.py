@@ -1,17 +1,8 @@
-import requests
+from curl_cffi import requests
 from bs4 import BeautifulSoup
 import rfeed
 from datetime import datetime, timedelta, timezone
 import re
-import cloudscraper
-import json
-
-import requests
-from bs4 import BeautifulSoup
-import rfeed
-from datetime import datetime, timedelta, timezone
-import re
-import cloudscraper
 import json
 
 class PerplexityScraper:
@@ -54,17 +45,10 @@ class PerplexityScraper:
         return full_text
 
     def generate_feed(self):
-        scraper = cloudscraper.create_scraper(
-            browser={
-                'browser': 'chrome',
-                'platform': 'windows',
-                'desktop': True
-            }
-        )
         url = "https://www.perplexity.ai/hub"
         
         print(f"Fetching {url}...")
-        response = scraper.get(url)
+        response = requests.get(url, impersonate="chrome")
         soup = BeautifulSoup(response.text, 'html.parser')
         
         articles = []
@@ -96,7 +80,7 @@ class PerplexityScraper:
         for link in sorted(list(links))[:15]:
             print(f"Processing {link}...")
             try:
-                art_response = scraper.get(link)
+                art_response = requests.get(link, impersonate="chrome")
                 art_soup = BeautifulSoup(art_response.text, 'html.parser')
                 
                 title = art_soup.title.string if art_soup.title else "No Title"

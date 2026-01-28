@@ -4,3 +4,4 @@ rfeed
 python-dateutil
 lxml
 cloudscraper
+curl_cffi
