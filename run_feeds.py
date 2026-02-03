@@ -10,6 +10,7 @@ from scrapers.amd import AMDScraper
 from scrapers.google_ai import GoogleAIScraper
 from scrapers.nvidia import NvidiaScraper
 from scrapers.openai import OpenAIScraper
+from scrapers.reallysimpleai import ReallySimpleAIScraper
 
 def run_scrapers():
     # The original code dynamically discovers scrapers in a directory.
@@ -24,7 +25,8 @@ def run_scrapers():
         PalantirScraper(),
         AmazonScraper(),
         ElevenLabsScraper(),
-        AnthropicScraper()
+        AnthropicScraper(),
+        ReallySimpleAIScraper()
     ]
 
     print(f"Running specific scrapers: {[s.__class__.__name__ for s in scrapers]}...")
