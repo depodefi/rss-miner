@@ -8,6 +8,32 @@ import re
 from dateutil import parser as date_parser
 
 class ReallySimpleAIScraper:
+    def clean_html_content(self, html_content):
+        """
+        Parses HTML content, removes unwanted elements (like 'Message actions'),
+        and returns plain text.
+        """
+        if not html_content:
+            return ""
+
+        soup = BeautifulSoup(html_content, 'html.parser')
+
+        # Remove the "Message actions" container which contains buttons and CSS classes
+        for div in soup.find_all('div', attrs={'aria-label': 'Message actions'}):
+            div.decompose()
+
+        # Remove any other buttons
+        for btn in soup.find_all('button'):
+            btn.decompose()
+
+        # Extract text
+        text = soup.get_text(separator=' ', strip=True)
+
+        # Normalize whitespace
+        text = re.sub(r'\s+', ' ', text).strip()
+
+        return text
+
     def generate_feed(self):
         rss_url = "https://reallysimpleai.blogspot.com/feeds/posts/default?alt=rss"
         try:
@@ -47,7 +73,8 @@ class ReallySimpleAIScraper:
             description = ""
             rss_desc = item.find('description')
             if rss_desc:
-                description = rss_desc.get_text(strip=True)
+                raw_html = rss_desc.get_text(strip=True)
+                description = self.clean_html_content(raw_html)
 
             feed_item = Item(
                 title=title,
